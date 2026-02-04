@@ -25,4 +25,4 @@ eSIM activated but no audit log exists.
 How would you detect this?
 How do you prevent it?
 
-Answer: To prevent silent log failure, I we can add suitable log-failure message that will alert the team. For example, we can use a slack alert.
+Answer: To prevent silent log failure, we can add suitable log-failure message that will alert the team. For example, we can use a slack alert.
