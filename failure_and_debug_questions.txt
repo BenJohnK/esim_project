@@ -26,3 +26,4 @@ How would you detect this?
 How do you prevent it?
 
 Answer: To prevent silent log failure, we can add suitable log-failure message that will alert the team. For example, we can use a slack alert.
+Occasional manual checks into the log file in the server could also help to detect whether log messages are audited correctly in the log file.
