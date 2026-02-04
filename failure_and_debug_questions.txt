@@ -1,0 +1,25 @@
+
+# Scenario A: Partner API Partial Failure
+Partner returns success but times out before confirmation.
+
+How do you handle uncertain state?
+How do you avoid double activation?
+How do you reconcile later?
+
+Answer: I will add notification mechanism for example: a slack webook alert to a dedicated slack channel about the timeout failure from the Partner API, indicating the timeout with an appropriate status code in the alert message. Therefore, before retrying the job again, I can first verify, whether the sim is already activated and only if it is not activated, I would retry the failed job. To retry/reconcile later, I can manually call celery.delay() function with the required parameters.
+
+Scenario B: Database Lock Contention
+Activation spikes cause DB locks.
+How do you reduce contention?
+What indexes help?
+When would you shard?
+
+Answer: We can Shard(Horizontal scaling of the database) the database when the user table, plan table and the user-plan-mappings table begin to grow beyond a certain point. For indexing, we can use user_id and plan_id fields for creating the hash function during sharding.
+
+
+Scenario C: Silent Data Corruption
+eSIM activated but no audit log exists.
+How would you detect this?
+How do you prevent it?
+
+Answer: To prevent silent log failure, I we can add suitable log-failure message that will alert the team. For example, we can use a slack alert.

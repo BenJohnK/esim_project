@@ -70,7 +70,7 @@ def activate_esim(request: HttpRequest):
                     request_id=request_id
                 )
 
-                # Try calling the external API service to activate the sim for the user. with 3 retries with backoff timings using a try except block. If fail user logger to log the reason.
+                # Try calling the external API partner service (preferrably a celery task) to activate the sim for the user. with 3 retries with backoff timings using a try except block. If failed, use logger to log the reason.
 
                 
             return JsonResponse({'message': 'eSIM activated successfully', 'id': mapping.id}, status=201)
