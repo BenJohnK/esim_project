@@ -11,6 +11,8 @@ from django.views.decorators.http import require_POST
 import json
 from .models import User, Plan, UserPlanMapping
 from django.db import IntegrityError, transaction
+from rest_framework import viewsets
+from .serializers import PlanSerializer
 
 
 @csrf_exempt
@@ -84,3 +86,10 @@ def activate_esim(request: HttpRequest):
         return JsonResponse({'error': 'Invalid JSON format'}, status=400)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+
+
+class PlanViewSet(viewsets.ModelViewSet):
+    queryset = Plan.objects.all()
+    serializer_class = PlanSerializer
+
+    

@@ -79,7 +79,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "esim_project",
         "USER": "root",
-        "PASSWORD": "myexam1234",
+        "PASSWORD": "myexam1234",  # Move this to the .env file later.
         "HOST": "127.0.0.1",
         "PORT": "3306",
     }
